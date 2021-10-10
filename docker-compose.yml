@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+    php:
+        build: .
+        volumes:
+            - .:/app
+            - ~/.composer:/.composer
+        env_file:
+            - .env
+        depends_on:
+            - rabbitmq
+
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:3.9-alpine
+        ports:
+            - 8100:15672
+        env_file:
+            - .env

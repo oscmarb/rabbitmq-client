@@ -1,0 +1,18 @@
+domain_event:
+    default:
+        queue: default_queue
+        exchange: default_exchange
+
+command:
+    default:
+        exchange: default_command_exchange
+
+    Oscmarb\RabbitMQ\Tests\CommandMock: [
+        {
+            queues: [ first_command_queue, second_command_queue ],
+            exchange: command_exchange
+        },
+        {
+            queue: command_queue
+        }
+    ]
